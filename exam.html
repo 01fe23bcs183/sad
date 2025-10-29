@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PsychePrep Exam Player</title>
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/exam.css" />
+  </head>
+  <body>
+    <div id="securityBanner" class="security-banner" role="alert" hidden></div>
+    <header class="exam-header">
+      <div class="brand">CUET PG Psychology Mock</div>
+      <div class="exam-meta">
+        <span id="examName">Psychology Mock 01</span>
+        <span id="candidateName">Candidate: You</span>
+        <span id="timeRemaining" class="badge">00:00:00</span>
+      </div>
+      <div class="header-actions">
+        <span class="badge highlight" id="activeMode">Mode: Full Mock</span>
+        <button id="themeToggle" class="ghost-button">🌓 Theme</button>
+        <button id="restoreFullscreen" class="ghost-button">🛡️ Fullscreen</button>
+        <button id="submitExam" class="primary-button">Submit</button>
+      </div>
+    </header>
+
+    <main class="exam-body">
+      <aside class="question-palette">
+        <div class="palette-header">
+          <h2>Questions</h2>
+          <div class="legend">
+            <span><span class="status attempted"></span> Attempted</span>
+            <span><span class="status flagged"></span> Marked</span>
+            <span><span class="status pending"></span> Pending</span>
+          </div>
+        </div>
+        <div id="questionList" class="palette-grid"></div>
+      </aside>
+
+      <section class="question-panel">
+        <header class="panel-header">
+          <div>
+            <h1 id="questionTitle">Question</h1>
+            <p id="questionMeta">Section A • Cognitive Processes</p>
+          </div>
+          <div class="panel-actions">
+            <button id="markReview" class="ghost-button">Mark for Review</button>
+            <button id="clearResponse" class="ghost-button">Clear</button>
+          </div>
+        </header>
+        <article id="questionContent" class="question-body"></article>
+        <footer class="panel-footer">
+          <div class="nav-buttons">
+            <button id="prevQuestion" class="ghost-button">Previous</button>
+            <button id="nextQuestion" class="primary-button">Next</button>
+          </div>
+          <div class="section-progress">
+            <span id="sectionProgress">Section 1 of 3 • Question 1/25</span>
+          </div>
+        </footer>
+      </section>
+
+      <aside class="exam-sidebar">
+        <section class="candidate-info">
+          <h2>Exam Checklist</h2>
+          <ul>
+            <li id="otpStatus">OTP Verified ✅</li>
+            <li>Camera Check ✅</li>
+            <li>System Audio ✅</li>
+            <li>Network Health ✅</li>
+          </ul>
+        </section>
+        <section class="strategy">
+          <h2>Mode & Strategy</h2>
+          <p id="modeSummary" class="muted">Full mock selected.</p>
+          <ul id="modeHighlights" class="bullet-list"></ul>
+          <div class="strategy-actions">
+            <button id="cycleMode" class="ghost-button">Cycle Mode</button>
+            <button id="resetMode" class="ghost-button">Reset</button>
+          </div>
+        </section>
+        <section class="notes">
+          <h2>Notepad</h2>
+          <textarea id="scratchpad" placeholder="Jot quick notes..."></textarea>
+        </section>
+        <section class="summary">
+          <h2>Attempt Summary</h2>
+          <p><span id="attemptedCount">0</span> Attempted</p>
+          <p><span id="flaggedCount">0</span> Flagged</p>
+          <p><span id="pendingCount">0</span> Pending</p>
+        </section>
+        <section class="proctoring">
+          <h2>Proctoring Monitor</h2>
+          <ul class="status-grid">
+            <li>Session ID: <span id="sessionId">-</span></li>
+            <li>Fullscreen: <span id="fullscreenStatus">Pending</span></li>
+            <li>Focus: <span id="focusStatus">Active</span></li>
+            <li>Network: <span id="networkStatus">Online</span></li>
+            <li>Incidents: <span id="incidentCount">0</span></li>
+            <li>Last Sync: <span id="lastSecuritySync">-</span></li>
+          </ul>
+          <div class="proctor-actions">
+            <button id="acknowledgeSecurity" class="ghost-button">Acknowledge Alerts</button>
+            <button id="forceRecheck" class="ghost-button">Force Recheck</button>
+          </div>
+          <ul id="securityFeed" class="bullet-list security-feed"></ul>
+        </section>
+      </aside>
+    </main>
+
+    <div id="dialog" class="dialog" role="dialog" aria-modal="true" hidden>
+      <div class="dialog-content">
+        <h2>Submit Confirmation</h2>
+        <p>You have <span id="dialogPending">0</span> questions pending. Are you sure you want to submit?</p>
+        <div class="dialog-actions">
+          <button class="ghost-button" data-action="close-dialog">Review Again</button>
+          <button class="primary-button" data-action="confirm-submit">Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="sessionBlocker" class="session-blocker" hidden>
+      <div class="session-message">
+        <h2>Exam Locked</h2>
+        <p id="sessionMessageText">
+          Another active session has been detected or the integrity checks failed. Please
+          contact the invigilator to unlock access.
+        </p>
+        <button id="exitSession" class="primary-button">Exit Attempt</button>
+      </div>
+    </div>
+
+    <script type="module" src="assets/js/exam.js"></script>
+  </body>
+</html>

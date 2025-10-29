@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Control Center | PsychePrep</title>
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <div class="brand">PsychePrep Admin</div>
+        <nav>
+          <a href="#overview" class="active">Overview</a>
+          <a href="#tests">Mock Tests</a>
+          <a href="#users">Learners</a>
+          <a href="#reports">Reports</a>
+          <a href="#ai">AI Insights</a>
+          <a href="#blueprints">Blueprints</a>
+          <a href="#pyq">PYQ Vault</a>
+          <a href="#billing">Billing</a>
+          <a href="index.html">Public Site</a>
+        </nav>
+        <button id="themeToggle" class="ghost-button">Toggle Theme</button>
+      </aside>
+
+      <main class="content">
+        <header class="content-header">
+          <h1>Administrator Dashboard</h1>
+          <div class="header-actions">
+            <input type="search" id="adminSearch" placeholder="Search cohorts, tests, mentors" />
+            <div class="user-chip">
+              <span class="avatar">AR</span>
+              <span class="details">
+                <strong>Anita Rao</strong>
+                <small>Super Admin</small>
+              </span>
+            </div>
+          </div>
+        </header>
+
+        <section id="overview" class="panel-grid">
+          <article class="panel">
+            <h2>Total Learners</h2>
+            <p class="metric" data-metric="learners">0</p>
+            <p class="trend positive">▲ 12% vs last month</p>
+          </article>
+          <article class="panel">
+            <h2>Mock Tests</h2>
+            <p class="metric" data-metric="tests">0</p>
+            <p class="trend neutral">▬ Stable schedule</p>
+          </article>
+          <article class="panel">
+            <h2>Average Score</h2>
+            <p class="metric" data-metric="score">0</p>
+            <p class="trend negative">▼ Requires attention</p>
+          </article>
+          <article class="panel">
+            <h2>Revenue (INR)</h2>
+            <p class="metric" data-metric="revenue">0</p>
+            <p class="trend positive">▲ 9% new upgrades</p>
+          </article>
+        </section>
+
+        <section id="tests" class="panel wide">
+          <header class="panel-header">
+            <div>
+              <h2>Mock Test Pipeline</h2>
+              <p>Manage upcoming exams, release notes, and difficulty calibrations.</p>
+            </div>
+            <button class="primary-button" data-action="create-test">Create Test</button>
+          </header>
+          <table class="data-table" id="testTable" aria-describedby="tests">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Window</th>
+                <th>Duration</th>
+                <th>Status</th>
+                <th>Registrations</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+
+        <section id="users" class="panel">
+          <header class="panel-header">
+            <div>
+              <h2>Learner Cohorts</h2>
+              <p>Track enrollments, mentor assignments, and OTP integrity.</p>
+            </div>
+            <button class="ghost-button" data-action="export-users">Export CSV</button>
+          </header>
+          <div id="learnerList" class="list"></div>
+        </section>
+
+        <section id="reports" class="panel">
+          <header class="panel-header">
+            <div>
+              <h2>Performance Reports</h2>
+              <p>Generate PDF-ready snapshots for university submissions.</p>
+            </div>
+            <button class="ghost-button" data-action="generate-report">Generate</button>
+          </header>
+          <div id="reportCanvas" class="chart"></div>
+        </section>
+
+        <section id="ai" class="panel">
+          <header class="panel-header">
+            <div>
+              <h2>Weak Topic Guesser</h2>
+              <p>AI confidence scores with mentor-ready remediation playbooks.</p>
+            </div>
+            <button class="ghost-button" data-action="push-remediation">Push to Mentors</button>
+          </header>
+          <table class="data-table" id="weakTopicTable">
+            <thead>
+              <tr>
+                <th>Topic</th>
+                <th>Confidence</th>
+                <th>Likely Pattern</th>
+                <th>Recommendation</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+
+        <section id="blueprints" class="panel">
+          <header class="panel-header">
+            <div>
+              <h2>Custom Mix Designer</h2>
+              <p>Analyse learner-generated blueprints & recommended chapter weights.</p>
+            </div>
+            <button class="ghost-button" data-action="export-blueprints">Export Mixes</button>
+          </header>
+          <div id="blueprintGrid" class="insight-grid"></div>
+        </section>
+
+        <section id="pyq" class="panel">
+          <header class="panel-header">
+            <div>
+              <h2>PYQ Intelligence</h2>
+              <p>Track recency and difficulty of past years' questions across topics.</p>
+            </div>
+            <button class="ghost-button" data-action="sync-pyq">Sync NTA Feed</button>
+          </header>
+          <table class="data-table" id="pyqTable">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Topic</th>
+                <th>Difficulty</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+
+        <section id="billing" class="panel">
+          <header class="panel-header">
+            <div>
+              <h2>Billing & Transactions</h2>
+              <p>Review payment events, refunds, and plan migrations.</p>
+            </div>
+            <button class="ghost-button" data-action="sync-payments">Sync Gateway</button>
+          </header>
+          <table class="data-table" id="billingTable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Customer</th>
+                <th>Plan</th>
+                <th>Amount</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="assets/js/admin.js"></script>
+  </body>
+</html>
