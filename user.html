@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learner Workspace | PsychePrep</title>
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <div class="brand">PsychePrep Learner</div>
+        <nav>
+          <a href="#summary" class="active">Summary</a>
+          <a href="#attempts">Mock Attempts</a>
+          <a href="#schedule">Schedule</a>
+          <a href="#resources">Resources</a>
+          <a href="#insights">Weak Topic AI</a>
+          <a href="#builder">Custom Mix</a>
+          <a href="#pyq">PYQ Vault</a>
+          <a href="#payments">Payments</a>
+          <a href="exam.html">Launch Exam</a>
+        </nav>
+        <button id="themeToggle" class="ghost-button">Toggle Theme</button>
+      </aside>
+
+      <main class="content">
+        <header class="content-header">
+          <h1>Welcome back, <span id="learnerName">Learner</span></h1>
+          <div class="header-actions">
+            <span class="badge success">OTP Verified</span>
+            <a class="ghost-button" href="index.html">Public Site</a>
+          </div>
+        </header>
+
+        <section id="summary" class="panel-grid">
+          <article class="panel">
+            <h2>Latest Score</h2>
+            <p class="metric" data-metric="latest-score">0</p>
+            <p class="trend positive">Improved 6 points</p>
+          </article>
+          <article class="panel">
+            <h2>Accuracy</h2>
+            <p class="metric" data-metric="accuracy">0%</p>
+            <p class="trend neutral">Consistent</p>
+          </article>
+          <article class="panel">
+            <h2>Time Management</h2>
+            <p class="metric" data-metric="avg-time">0 min</p>
+            <p class="trend negative">Focus required</p>
+          </article>
+          <article class="panel">
+            <h2>Confidence</h2>
+            <p class="metric" data-metric="confidence">0%</p>
+            <p class="trend positive">Steady climb</p>
+          </article>
+        </section>
+
+        <section id="attempts" class="panel wide">
+          <header class="panel-header">
+            <div>
+              <h2>Recent Attempts</h2>
+              <p>Drill into responses, topic mastery, and curated feedback.</p>
+            </div>
+            <button class="ghost-button" data-action="download-attempts">Download</button>
+          </header>
+          <table class="data-table" id="attemptTable">
+            <thead>
+              <tr>
+                <th>Mock</th>
+                <th>Date</th>
+                <th>Score</th>
+                <th>Percentile</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+
+        <section id="insights" class="panel">
+          <header class="panel-header">
+            <div>
+              <h2>Weak Topic Guesser</h2>
+              <p>AI predicted blind spots with one-click remediation and exam focus.</p>
+            </div>
+            <button class="ghost-button" data-action="refresh-insights">Refresh</button>
+          </header>
+          <table class="data-table" id="weakTopicList">
+            <thead>
+              <tr>
+                <th>Topic</th>
+                <th>Confidence</th>
+                <th>Likely Pattern</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+
+        <section id="builder" class="panel">
+          <header class="panel-header">
+            <div>
+              <h2>Custom Chapter Mix</h2>
+              <p>Blend chapters, pick intensity, and auto-sync with the exam player.</p>
+            </div>
+            <span class="badge" id="builderStatus">Idle</span>
+          </header>
+          <form id="mixForm" class="mix-form">
+            <fieldset>
+              <legend>Chapters</legend>
+              <div id="chapterChecklist" class="checklist"></div>
+            </fieldset>
+            <div class="form-grid">
+              <label>
+                Question Count
+                <input type="number" name="questions" value="15" min="5" max="90" step="5" required />
+              </label>
+              <label>
+                Target Duration (mins)
+                <input type="number" name="duration" value="90" min="30" max="180" step="15" required />
+              </label>
+              <label>
+                Difficulty Blend
+                <select name="difficulty">
+                  <option value="balanced">Balanced</option>
+                  <option value="advanced">Advanced</option>
+                  <option value="foundation">Foundation</option>
+                </select>
+              </label>
+            </div>
+            <footer class="form-actions">
+              <button type="submit" class="primary-button">Generate Blueprint</button>
+              <button type="button" class="ghost-button" data-action="reset-blueprint">Reset</button>
+            </footer>
+          </form>
+        </section>
+
+        <section id="pyq" class="panel">
+          <header class="panel-header">
+            <div>
+              <h2>PYQ Sprint</h2>
+              <p>Instantly launch a past-year-only drill filtered by topic & year.</p>
+            </div>
+            <button class="ghost-button" data-action="clear-pyq">Clear Filters</button>
+          </header>
+          <div class="pyq-controls">
+            <label>
+              Select Year
+              <select id="pyqYear">
+                <option value="">All</option>
+              </select>
+            </label>
+            <label>
+              Focus Topic
+              <select id="pyqTopic">
+                <option value="">All</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" data-action="launch-pyq">Launch PYQ Mode</button>
+          </div>
+          <table class="data-table" id="pyqList">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Topic</th>
+                <th>Difficulty</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+
+        <section id="schedule" class="panel">
+          <header class="panel-header">
+            <div>
+              <h2>Upcoming Schedule</h2>
+              <p>Integrates with Google Calendar via ICS export.</p>
+            </div>
+            <button class="ghost-button" data-action="export-calendar">Export ICS</button>
+          </header>
+          <div id="scheduleList" class="list"></div>
+        </section>
+
+        <section id="resources" class="panel">
+          <header class="panel-header">
+            <div>
+              <h2>Curated Resources</h2>
+              <p>Mind maps, case studies, and flashcards tailored for Psychology.</p>
+            </div>
+            <button class="ghost-button" data-action="filter-resources">Filter</button>
+          </header>
+          <div id="resourceGrid" class="resource-grid"></div>
+        </section>
+
+        <section id="payments" class="panel">
+          <header class="panel-header">
+            <div>
+              <h2>Payment History</h2>
+              <p>Secure Razorpay sandbox simulation with downloadable invoices.</p>
+            </div>
+            <button class="primary-button" data-action="new-payment" data-plan="pro">Upgrade Plan</button>
+          </header>
+          <table class="data-table" id="paymentTable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Plan</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Invoice</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="assets/js/user.js"></script>
+  </body>
+</html>
