@@ -1,0 +1,20 @@
+:root[data-theme='nebula'] {
+  --surface-bg: #0a0a12;
+  --card-bg: rgba(22, 22, 42, 0.85);
+  --text-primary: #ffffff;
+}
+
+:root[data-theme='aurora'] {
+  --surface-bg: #050f0d;
+  --card-bg: rgba(13, 38, 33, 0.82);
+  --text-primary: #f8fff9;
+}
+
+body {
+  background-color: var(--surface-bg);
+  color: var(--text-primary);
+}
+
+.theme-card {
+  background: var(--card-bg);
+}
