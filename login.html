@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PsychePrep Login</title>
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/auth.css" />
+  </head>
+  <body>
+    <main class="auth-wrapper">
+      <section class="auth-card">
+        <h1>Access Your Workspace</h1>
+        <p>Login with secure email OTP. Choose a role to continue.</p>
+
+        <form id="otpForm" class="auth-form">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="you@example.com" />
+
+          <label for="role">Role</label>
+          <select id="role" name="role" required>
+            <option value="learner">Learner</option>
+            <option value="mentor">Mentor</option>
+            <option value="admin">Administrator</option>
+          </select>
+
+          <div class="otp-controls">
+            <label for="otp">One Time Password</label>
+            <div class="otp-row">
+              <input type="text" id="otp" name="otp" inputmode="numeric" maxlength="6" placeholder="Enter 6-digit OTP" />
+              <button type="button" id="sendOtp" class="ghost-button">Send OTP</button>
+            </div>
+          </div>
+
+          <button type="submit" class="primary-button">Verify & Continue</button>
+        </form>
+
+        <p class="auth-note">By continuing you agree to our honor code and assessment terms.</p>
+        <a class="ghost-button" href="index.html">Back to home</a>
+      </section>
+
+      <aside class="auth-aside">
+        <h2>Why OTP?</h2>
+        <p>Protect your progress with secure device-bound verification. OTP expires in five minutes.</p>
+        <div class="theme-toggle-inline">
+          <label for="themeToggle">Theme</label>
+          <button id="themeToggle" class="ghost-button" aria-label="Toggle theme">🌓</button>
+        </div>
+      </aside>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script type="module" src="assets/js/login.js"></script>
+  </body>
+</html>
